@@ -15,6 +15,7 @@
  */
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
+@import " font-awesome ";
 
 header {
 	color:white;
@@ -34,4 +35,37 @@ body {
 }
 #error_explanation {
   color: red;
+}
+ol {
+	list-style-type: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.flex {
+	display: flex;
+	align-items: flex-end;
+
+
+	.flex > div {
+
+}
+}
+.comment-list{
+	margin: 0 5px;
+	padding-bottom: 20px;
+}
+.comment {
+	width: 450px;
+	height: 100px;
+}
+.comment-text{
+	float: left;
+}
+.comment-sbmit {
+	margin-left: 5px;
+	position: absolute;
+	bottom: 0;
+}
+li {
+	list-style: none;
 }
