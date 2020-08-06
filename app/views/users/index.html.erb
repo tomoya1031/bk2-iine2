@@ -29,40 +29,9 @@
 			<td>フォロー数<%= user.followings.count %></td>
 			<td>フォロワー数<%= user.followers.count %></td>
 			<td>
-		      <% unless current_user == user %>
- 				<% if current_user.following?(user) %>
-                  <li>
-
-                    <%= link_to 'フォロー外す(link)', relationship_path(user.id), method: :delete %>
-
-                    <%= form_for( current_user.following_relationships.build,url: relationship_path(user.id),method: :delete) do |f| %>
-                      <%= hidden_field_tag :id ,user.id %>
-                      <%= f.submit "フォロー外す(for)", class: "btn btn-large" %>
-                    <% end %>
-
-                    <%= form_with(url: relationship_path(user.id),method: :delete) do |f| %>
-                      <%= hidden_field_tag :id, user.id %>
-                      <%= f.submit "フォロー外す(with)", class: "btn btn-outline-secondary" %>
-                    <% end %>
-
-                  </li>
-                <% else %>
-                  <li>
-                    <%= link_to 'フォローする(link)', relationships_path(following_id: user.id), method: :POST %>
-
-                  	<%= form_for( current_user.following_relationships.build, url: relationships_path) do |f| %>
-                  	  <div><%= hidden_field_tag :following_id ,user.id %></div>
-                  	  <%= f.submit "フォローする(for)", class: "btn btn-large btn-primary" %>
-                    <% end %>
-
-                    <%= form_with(url: relationships_path) do |f| %>
-                      <%= hidden_field_tag :following_id ,user.id %>
-                      <%= f.submit "フォローする(with)", class: "btn btn-outline-secondary" %>
-                    <% end %>
-
-                  </li>
-                <% end %>
-              <% end %>
+		      <div id="follow_<%= user.id %>">
+			    <%= render 'relationships/follow', user: user %>
+			  </div>
 			</td>
 
 		</tr>
